@@ -22,7 +22,7 @@ rails s
 
 # ドキュメント類の共有リンク
 ## カタログ設計書、テーブル定義書、チェックリストなど
-https://docs.google.com/spreadsheets/d/1GXEPK4UMuNDu9rDFjEhkMcoDjEc96nEmIoCF0mBXI2Y/edit#gid=2020033787
+https://docs.google.com/spreadsheets/d/1GXEPK4UMuNDu9rDFjEhkMcoDjEc96nEmIoCF0mBXI2Y/edit?usp=sharing
 
 ## ワイヤーフレーム
 https://github.com/tai9174/animal_kpt/files/9288888/animalKPT.xlsx
