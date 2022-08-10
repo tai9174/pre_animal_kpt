@@ -29,8 +29,10 @@ https://docs.google.com/spreadsheets/d/1GXEPK4UMuNDu9rDFjEhkMcoDjEc96nEmIoCF0mBX
 https://github.com/tai9174/animal_kpt/files/9288888/animalKPT.xlsx
 
 ## ER図
-https://user-images.githubusercontent.com/104898840/183829482-00197158-cb95-4048-944c-0fe25b2755b6.png
+<img src= "document/ER図.jpg">
+https://user-images.githubusercontent.com/104898840/183868424-a1d938f5-4262-455e-bd3f-23aa7401cd38.png
 
 ## 画面遷移図
+<img src= "document/画面遷移図.jpg">
 https://user-images.githubusercontent.com/104898840/183829567-4bbca589-9b8a-4745-b555-a6584cc69d65.png
 
