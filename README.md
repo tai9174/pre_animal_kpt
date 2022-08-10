@@ -29,7 +29,7 @@ https://docs.google.com/spreadsheets/d/1GXEPK4UMuNDu9rDFjEhkMcoDjEc96nEmIoCF0mBX
 https://github.com/tai9174/animal_kpt/files/9288888/animalKPT.xlsx
 
 ## ER図
-https://user-images.githubusercontent.com/104898840/183608503-094a8f37-e50e-4604-bd92-a00037deeece.png
+https://user-images.githubusercontent.com/104898840/183794982-c417d267-d528-4693-ae7e-f24d9f442829.png
 
 ## 画面遷移図
 https://user-images.githubusercontent.com/104898840/183609068-fcf99b21-e0f6-4e1b-9537-4b4aa1832070.png
