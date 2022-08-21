@@ -1,9 +1,10 @@
 class KptsController < ApplicationController
   before_action :set_kpt, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, only: [:new, :create,:index]
 
   # GET /kpts or /kpts.json
   def index
-    @kpts = Kpt.all
+    @kpts = current_user.kpts.order(created_at: :desc)
   end
 
   # GET /kpts/1 or /kpts/1.json
@@ -21,7 +22,8 @@ class KptsController < ApplicationController
 
   # POST /kpts or /kpts.json
   def create
-    @kpt = Kpt.new(kpt_params)
+    
+    @kpt = current_user.kpts.build(kpt_params)
 
     respond_to do |format|
       if @kpt.save
@@ -57,14 +59,25 @@ class KptsController < ApplicationController
     end
   end
 
+  
+  def favorits
+    @kpts = current_user.kpts 
+    @favorite_kpts=[]
+    @kpts.each do |kpt|
+      if kpt.favorite == true
+        @favorite_kpts<< kpt
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_kpt
-      @kpt = Kpt.find(params[:id])
-    end
+  def set_kpt
+    @kpt = Kpt.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def kpt_params
-      params.require(:kpt).permit(:keep_content, :keep_status, :problem_content, :problem_status, :try_content, :try_status, :favorite)
-    end
+  # Only allow a list of trusted parameters through.
+  def kpt_params
+    params.require(:kpt).permit(:keep_content, :keep_status, :problem_content, :problem_status, :try_content, :try_status, :favorite)
+  end
 end
