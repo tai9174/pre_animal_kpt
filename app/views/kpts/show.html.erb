@@ -1,39 +1,75 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Keep content:</strong>
-  <%= @kpt.keep_content %>
+  <strong>Keep :</strong>
+</p>
+  <% if @kpt.keep_status == "●少し達成●" %>
+    <p style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFFFCC;" id="keep-area">
+  <% elsif @kpt.keep_status == "●達成●"%>
+    <p style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #CCFFFF;" id="keep-area">
+  <%else %>
+    <p style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFCCCC;" id="keep-area">
+  <%end %>
+  <%= safe_join(@kpt.keep_content.split("\n"),tag(:br))%>
 </p>
 
 <p>
-  <strong>Keep status:</strong>
+  <strong>Keepの達成度:</strong>
   <%= @kpt.keep_status %>
 </p>
+<div>
+  <button class="clip" data-clipboard-target="#keep-area">Keepをコピー
+  </button>
+</div>
 
 <p>
-  <strong>Problem content:</strong>
-  <%= @kpt.problem_content %>
+  <strong>Problem :</strong>
+</p>
+  <% if @kpt.problem_status == "○少し達成○" %>
+    <p style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFFFCC;" id="problem-area">
+  <% elsif @kpt.problem_status == "○達成○"%>
+    <p style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #CCFFFF;" id="problem-area">
+  <%else %>
+    <p style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFCCCC;" id="problem-area">
+  <%end %>
+  <%=safe_join(@kpt.problem_content.split("\n"),tag(:br))%>
 </p>
 
 <p>
-  <strong>Problem status:</strong>
+  <strong>Problemの達成度:</strong>
   <%= @kpt.problem_status %>
 </p>
+<div>
+  <button class="clip" data-clipboard-target="#problem-area">Problemをコピー
+  </button>
+</div>
 
 <p>
-  <strong>Try content:</strong>
-  <%= @kpt.try_content %>
+  <strong>Try :</strong>
+</p>
+  <% if @kpt.try_status == "◎少し達成◎" %>
+    <p style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFFFCC;" id="try-area">
+  <% elsif @kpt.try_status == "◎達成◎"%>
+    <p style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #CCFFFF;" id="try-area">
+  <%else %>
+    <p style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFCCCC;" id="try-area">
+  <%end %>
+  <%=safe_join(@kpt.try_content.split("\n"),tag(:br))%>
 </p>
 
 <p>
-  <strong>Try status:</strong>
+  <strong>Tryの達成度:</strong>
   <%= @kpt.try_status %>
 </p>
+<div>
+  <button class="clip" data-clipboard-target="#try-area">Tryをコピー
+  </button>
+</div>
 
 <p>
   <strong>Favorite:</strong>
   <%= @kpt.favorite %>
 </p>
 
-<%= link_to 'Edit', edit_kpt_path(@kpt) %> |
-<%= link_to 'Back', kpts_path %>
+<%= link_to '編集', edit_kpt_path(@kpt) %> |
+<%= link_to '戻る', kpts_path %>
