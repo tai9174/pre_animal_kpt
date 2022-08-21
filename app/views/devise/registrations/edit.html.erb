@@ -1,0 +1,35 @@
+<h2>Edit <%= resource_name.to_s.humanize %></h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :ニックネーム %><br />
+    <%= f.text_field :name, autofocus: true, autocomplete: "name",placeholder: "3文字以上" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :password %> 
+    <%= f.password_field :password, autocomplete: "new-password", placeholder: '変更がなければ空欄' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: '変更がなければ空欄' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"今のパスワード(変更する場合必須)" %> 
+    <%= f.password_field :current_password, autocomplete: "current-password" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "更新" %>
+  </div>
+<% end %>
+
+<h3>アカウントを消す</h3>
+
+<%= button_to "消す", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+<%= link_to "戻る", users_show_path %>
