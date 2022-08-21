@@ -1,4 +1,5 @@
 class Kpt < ApplicationRecord
+  belongs_to :user
   validates :keep_content, presence: true, length: { maximum: 130}
   validates :problem_content, presence: true, length: { maximum: 130}
   validates :try_content, length: { maximum: 130}
