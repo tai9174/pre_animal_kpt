@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_21_072318) do
+ActiveRecord::Schema.define(version: 2022_08_21_120556) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "kpts", force: :cascade do |t|
+    t.text "keep_content"
+    t.integer "keep_status"
+    t.text "problem_content"
+    t.integer "problem_status"
+    t.text "try_content"
+    t.integer "try_status"
+    t.boolean "favorite"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email"

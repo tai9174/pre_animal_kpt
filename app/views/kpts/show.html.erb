@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Keep content:</strong>
+  <%= @kpt.keep_content %>
+</p>
+
+<p>
+  <strong>Keep status:</strong>
+  <%= @kpt.keep_status %>
+</p>
+
+<p>
+  <strong>Problem content:</strong>
+  <%= @kpt.problem_content %>
+</p>
+
+<p>
+  <strong>Problem status:</strong>
+  <%= @kpt.problem_status %>
+</p>
+
+<p>
+  <strong>Try content:</strong>
+  <%= @kpt.try_content %>
+</p>
+
+<p>
+  <strong>Try status:</strong>
+  <%= @kpt.try_status %>
+</p>
+
+<p>
+  <strong>Favorite:</strong>
+  <%= @kpt.favorite %>
+</p>
+
+<%= link_to 'Edit', edit_kpt_path(@kpt) %> |
+<%= link_to 'Back', kpts_path %>

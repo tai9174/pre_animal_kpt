@@ -1,0 +1,52 @@
+<%= form_with(model: kpt, local: true) do |form| %>
+  <% if kpt.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(kpt.errors.count, "error") %> prohibited this kpt from being saved:</h2>
+
+      <ul>
+        <% kpt.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :keep_content %>
+    <%= form.text_area :keep_content %>
+  </div>
+
+  <div class="field">
+    <%= form.label :keep_status %>
+    <%= form.number_field :keep_status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :problem_content %>
+    <%= form.text_area :problem_content %>
+  </div>
+
+  <div class="field">
+    <%= form.label :problem_status %>
+    <%= form.number_field :problem_status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :try_content %>
+    <%= form.text_area :try_content %>
+  </div>
+
+  <div class="field">
+    <%= form.label :try_status %>
+    <%= form.number_field :try_status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :favorite %>
+    <%= form.check_box :favorite %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

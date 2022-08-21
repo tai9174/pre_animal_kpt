@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Kpts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Keep content</th>
+      <th>Keep status</th>
+      <th>Problem content</th>
+      <th>Problem status</th>
+      <th>Try content</th>
+      <th>Try status</th>
+      <th>Favorite</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @kpts.each do |kpt| %>
+      <tr>
+        <td><%= kpt.keep_content %></td>
+        <td><%= kpt.keep_status %></td>
+        <td><%= kpt.problem_content %></td>
+        <td><%= kpt.problem_status %></td>
+        <td><%= kpt.try_content %></td>
+        <td><%= kpt.try_status %></td>
+        <td><%= kpt.favorite %></td>
+        <td><%= link_to 'Show', kpt %></td>
+        <td><%= link_to 'Edit', edit_kpt_path(kpt) %></td>
+        <td><%= link_to 'Destroy', kpt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Kpt', new_kpt_path %>
