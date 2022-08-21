@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>日にち:</strong>
+  <%= @kpt.date.strftime('%Y/%m/%d')%>
+</p>
+
+<p>
   <strong>Keep :</strong>
 </p>
   <% if @kpt.keep_status == "●少し達成●" %>

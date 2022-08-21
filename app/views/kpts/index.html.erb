@@ -19,7 +19,7 @@
   <tbody>
     <% @kpts.each do |kpt| %>
       <tr>
-        <td><%= kpt.created_at.strftime('%m/%d') %></td>
+        <td><%= kpt.date.strftime('%m/%d') %></td>
           <% if kpt.keep_status == "●少し達成●" %>
             <td style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFFFCC;">
           <% elsif kpt.keep_status == "●達成●"%>

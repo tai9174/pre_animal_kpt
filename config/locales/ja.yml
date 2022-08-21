@@ -13,9 +13,6 @@ ja:
         current_password: 現在のパスワード
       team:
         team_name: チーム名
-      kpt:
-        update Kpt: 更新する 
-        create Kpt: 作成する
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

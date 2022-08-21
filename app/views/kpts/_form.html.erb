@@ -12,6 +12,11 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :日にち %>
+    <%= form.date_field :date%>
+  </div>
+
+  <div class="field">
     <%= form.label :"keep(最大130字)"%>
     <%= form.text_area :keep_content,size: "40x8",class: 'form-control  js-text', 
         rows: 6 , placeholder: '改行の文字数(2文字)'%>

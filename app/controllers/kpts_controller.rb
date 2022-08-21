@@ -4,7 +4,7 @@ class KptsController < ApplicationController
 
   # GET /kpts or /kpts.json
   def index
-    @kpts = current_user.kpts.order(created_at: :desc)
+    @kpts = current_user.kpts.order(date: :desc)
   end
 
   # GET /kpts/1 or /kpts/1.json
@@ -78,6 +78,6 @@ class KptsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def kpt_params
-    params.require(:kpt).permit(:keep_content, :keep_status, :problem_content, :problem_status, :try_content, :try_status, :favorite)
+    params.require(:kpt).permit(:keep_content, :keep_status, :problem_content, :problem_status, :try_content, :try_status, :favorite,:date)
   end
 end

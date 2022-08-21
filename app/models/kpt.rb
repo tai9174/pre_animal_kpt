@@ -6,6 +6,7 @@ class Kpt < ApplicationRecord
   validates :keep_status, presence: true
   validates :problem_status, presence: true
   validates :try_status, presence: true
+  validates :date, presence: true
   enum keep_status:{
     ●達成●:2, ●問題●:0, ●少し達成●:1
   } 
