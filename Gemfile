@@ -54,3 +54,8 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'rexml'
+gem "jquery-rails"
+gem 'clipboard-rails'
+gem 'zeroclipboard-rails'
+gem 'jquery-turbolinks'
+gem "simple_calendar", "~> 2.0"
