@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "users/show" => "users#show"
   get "favorits/index" => "favorits#index"
   get "tops/help" => "tops#help"
   root "kpts#index"

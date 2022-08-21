@@ -1,23 +1,57 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>AnimalKpt</title>
+    <title>PreAnimalKPT</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <% if user_signed_in? %>
-      <%= link_to 'トップ画面', tops_index_path %>
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to 'トップ画面', tops_index_path %>
-      <%= link_to "ログイン", new_user_session_path %>
-      <%= link_to "新規登録", new_user_registration_path %>
+  <% if user_signed_in? %>
+    <%= link_to 'トップ画面', tops_index_path %>
+    <%= link_to 'プロフィール画面', users_show_path %>
+    <%= link_to 'マイKPT', kpts_path %>
+    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+    
+    
+  <% else %>
+    <%= link_to 'トップ画面', tops_index_path %>
+    <%= link_to "ログイン", new_user_session_path %>
+    <%= link_to "新規登録", new_user_registration_path %>
   <% end %>
     <%= yield %>
+    <!-- clipboard.js -->
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+    <script type="text/javascript">
+    var clipboard = new ClipboardJS('.clip');
+    
+    //成功した時の処理
+    clipboard.on('success', function (e) {
+      console.info('Action:', e.action);
+      console.info('Text:', e.text);
+      console.info('Trigger:', e.trigger);
+    
+      //テキストが選択された状態になるので、解除する場合は下記のコードを書く
+      e.clearSelection();
+    });
+      
+    //エラーになった時の処理
+    clipboard.on('error', function (e) {
+      console.error('Action:', e.action);
+      console.error('Trigger:', e.trigger);
+    });
+    </script>
   </body>
 </html>
+
+
+
+
+
+
+
+
