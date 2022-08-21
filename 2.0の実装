@@ -1,0 +1,2 @@
+[issues/#3 a4fcdd0] gem jquery-rails gem 'clipboard-rails' gem 'zeroclipboard-rails' gem 'jquery-turbolinks' gem simple_calendar, ~
+ 3 files changed, 40 insertions(+), 1 deletion(-)
