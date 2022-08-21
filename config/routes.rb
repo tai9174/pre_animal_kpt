@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "tops/help" => "tops#help"
   root "kpts#index"
   resources :kpts
   devise_for :users
