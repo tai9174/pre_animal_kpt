@@ -1,0 +1,32 @@
+<h1>グループ一覧</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Team name </th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @teams.each do |team| %>
+      <tr>
+        <td><%= link_to team.team_name, team_kpts_path(team)%></td>
+        <td><%= link_to '詳細(チームに加る・外れる)', team %></td>
+        <td><%= link_to 'チームメンバー', team_members_path(team) %></td>
+        <% if team.user == current_user %>
+          <td><%= link_to '編集', edit_team_path(team) %></td>
+          <td><%= link_to '削除', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% else %>
+          <td></td>
+          <td></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+<%= link_to '新チーム', new_team_path%>
+<%= link_to '戻る', kpts_path %>

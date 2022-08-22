@@ -1,0 +1,54 @@
+<h1><%=@team.team_name %>のKPT</h1>
+<div>
+<h3><%=Date.today.strftime('%m/%d') %></h3>
+</div>
+<%= link_to 'カレンダー', team_calendar_path %>
+<table>
+  <thead>
+    <tr>
+      <th>ニックネーム </th>
+      <th>Keep </th>
+      <th>Problem </th>
+      <th>Try </th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%@today_kpts.each do |kpt| %>
+      <tr>
+        <td><%=kpt.user.name %></td>
+          <% if kpt.keep_status == "●少し達成●" %>
+            <td style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFFFCC;">
+          <% elsif kpt.keep_status == "●達成●"%>
+            <td style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #CCFFFF;">
+          <%else %>
+            <td style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFCCCC;">
+          <%end %>
+          <%=safe_join(kpt.keep_content.split("\n"),tag(:br))%>
+        </td> 
+          <% if kpt.problem_status == "○少し達成○" %>
+            <td style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFFFCC;">
+          <% elsif kpt.problem_status == "○達成○"%>
+            <td style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #CCFFFF;">
+          <%else %>
+            <td style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFCCCC;">
+          <%end %>
+          <%=safe_join(kpt.problem_content.split("\n"),tag(:br))%>
+        </td>
+          <% if kpt.try_status == "◎少し達成◎" %>
+            <td style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFFFCC;">
+          <% elsif kpt.try_status == "◎達成◎"%>
+            <td style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #CCFFFF;">
+          <%else %>
+            <td style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFCCCC;">
+          <%end %>
+          <%=safe_join(kpt.try_content.split("\n"),tag(:br))%>
+        </td>
+      </tr>
+    <% end %>
+  </tbody> 
+</table>
+
+<br>
+<%= link_to '戻る', teams_path %>
