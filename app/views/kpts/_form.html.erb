@@ -1,0 +1,146 @@
+<%= form_with(model: kpt, local: true) do |form| %>
+  <% if kpt.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(kpt.errors.count, "error") %> prohibited this kpt from being saved:</h2>
+
+      <ul>
+        <% kpt.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :日にち %>
+    <%= form.date_field :date%>
+  </div>
+
+  <div class="field">
+    <%= form.label :"keep(最大130字)"%>
+    <%= form.text_area :keep_content,size: "40x8",class: 'form-control  js-text', 
+        rows: 6 , placeholder: '改行の文字数(2文字)'%>
+    
+    <P class="js-text-count pull-right"></P> 
+  </div>
+
+  
+
+  <div class="field">
+    <%= form.label :Keepの達成度 %>
+    <%= form.select :keep_status, Kpt.keep_statuses.keys , class: "keep_status-select"%>
+  </div>
+
+  <div class="field">
+    <%= form.label :"problem(最大130字)" %>
+    <%= form.text_area :problem_content , size: "40x8",class: 'form-control  js-text2', rows: 6, placeholder: '改行の文字数(2文字)'%>
+
+    <P class="js-text-count2 pull-right"></P>
+  </div>
+
+  <div class="field">
+    <%= form.label :Problemの達成度 %>
+    <%= form.select :problem_status, Kpt.problem_statuses.keys,class: "problem_status-select"%>
+  </div>
+  
+  <div class="field">
+    <%= form.label :"try(最大130字)" %>
+    <%= form.text_area :try_content , size: "40x8",class: 'form-control  js-text3', rows: 6, placeholder: '改行の文字数(2文字)'%>
+
+    <P class="js-text-count3 pull-right"></P>
+  </div>
+
+  <div class="field">
+    <%= form.label :Tryの達成度 %>
+    <%= form.select :try_status, Kpt.try_statuses.keys,  class: "try_status-select"%>
+  </div>
+
+  <div class="field">
+    <%= form.label :お気に入り %>
+    <%= form.check_box :favorite %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+
+<script type="text/javascript">
+  $(function (){
+    var count = $(".js-text").text().replace(/\n/g, "改行").length;
+    var now_count = 130 - count;
+    if (count > 130) {
+      $(".js-text-count").css("color","red");
+    }
+    $(".js-text-count").text( "残り" + now_count + "文字");
+
+    $(".js-text").on("keyup", function() {
+      var count = $(this).val().replace(/\n/g, "改行").length;
+      var now_count = 130 - count;
+
+      if (count > 130) {
+        $(".js-text-count").css("color","red");
+      } else {
+        $(".js-text-count").css("color","black");
+      }
+      $(".js-text-count").text( "残り" + now_count + "文字");
+    });
+  });
+</script>
+<script type="text/javascript">
+  $(function (){
+    var count = $(".js-text2").text().replace(/\n/g, "改行").length;
+    var now_count = 130 - count;
+    if (count > 130) {
+      $(".js-text-count2").css("color","red");
+    }
+    $(".js-text-count2").text( "残り" + now_count + "文字");
+
+    $(".js-text2").on("keyup", function() {
+      var count = $(this).val().replace(/\n/g, "改行").length;
+      var now_count = 130 - count;
+
+      if (count > 130) {
+        $(".js-text-count2").css("color","red");
+      } else {
+        $(".js-text-count2").css("color","black");
+      }
+      $(".js-text-count2").text( "残り" + now_count + "文字");
+    });
+  });
+</script>
+<script type="text/javascript">
+  $(function (){
+    var count = $(".js-text3").text().replace(/\n/g, "改行").length;
+    var now_count = 130 - count;
+    if (count > 130) {
+      $(".js-text-count3").css("color","red");
+    }
+    $(".js-text-count3").text( "残り" + now_count + "文字");
+
+    $(".js-text3").on("keyup", function() {
+      var count = $(this).val().replace(/\n/g, "改行").length;
+      var now_count = 130 - count;
+
+      if (count > 130) {
+        $(".js-text-count3").css("color","red");
+      } else {
+        $(".js-text-count3").css("color","black");
+      }
+      $(".js-text-count3").text( "残り" + now_count + "文字");
+    });
+  });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function(){  
+
+  var clipboard = new Clipboard('.clipboard-btn');
+  console.log(clipboard);
+
+});
+</script>
+
+
+
