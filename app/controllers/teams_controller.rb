@@ -87,11 +87,7 @@ class TeamsController < ApplicationController
     @join_team_users= @team.join_team_users
     @today_kpts=[]
     @join_team_users.each do |join_team_user|
-      join_team_user.kpts.each do |kpt|
-        if kpt.date.strftime('%Y/%m/%d')== DateTime.now.strftime('%Y/%m/%d')
-          @today_kpts<< kpt
-        end
-      end
+      @join_kpts=join_team_user.kpts.order(date: :desc)
     end
   end
 
@@ -105,5 +101,4 @@ class TeamsController < ApplicationController
   def team_params
     params.require(:team).permit(:team_name,:creater_id)
   end
-
 end
