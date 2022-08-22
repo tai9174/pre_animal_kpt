@@ -1,22 +1,12 @@
-<%= month_calendar do |date| %>
-  <%= date.day %>
-<% end %>
-
-
-<td><%= link_to "今日のKPT", team_kpts0_path(@team)%></td>
-<td><%= link_to "昨日のKPT", team_kpts_1_path(@team)%></td>
-
-<h1><%=@team.team_name %>のKPT一覧</h1>
-
-<h1>title</h1>    
-<h2>8/1のKPT </h2>
-<h2>8/2のKPT </h2>
-
+<h1><%=@team.team_name %>のKPT</h1>
+<div>
+<h3><%=Date.today.strftime('%m/%d') %></h3>
+</div>
+<%= link_to 'カレンダー', team_calendar_path %>
 <table>
   <thead>
     <tr>
-      <th>Name </th>
-      <th>Date </th>
+      <th>ニックネーム </th>
       <th>Keep </th>
       <th>Problem </th>
       <th>Try </th>
@@ -25,40 +15,40 @@
   </thead>
 
   <tbody>
-    <% @join_kpts.each do |join_kpt| %>
-    
+    <%@day0_kpts.each do |kpt| %>
       <tr>
-        <td><%= join_kpt.user.name %></td>
-        <td><%= join_kpt.date.strftime('%m/%d') %></td>  
-          <% if join_kpt.keep_status == "●少し達成●" %>
+        <td><%=kpt.user.name %></td>
+          <% if kpt.keep_status == "●少し達成●" %>
             <td style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFFFCC;">
-          <% elsif join_kpt.keep_status == "●達成●"%>
+          <% elsif kpt.keep_status == "●達成●"%>
             <td style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #CCFFFF;">
           <%else %>
             <td style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFCCCC;">
           <%end %>
-          <%=safe_join(join_kpt.keep_content.split("\n"),tag(:br))%>
+          <%=safe_join(kpt.keep_content.split("\n"),tag(:br))%>
+        </td> 
+          <% if kpt.problem_status == "○少し達成○" %>
+            <td style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFFFCC;">
+          <% elsif kpt.problem_status == "○達成○"%>
+            <td style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #CCFFFF;">
+          <%else %>
+            <td style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFCCCC;">
+          <%end %>
+          <%=safe_join(kpt.problem_content.split("\n"),tag(:br))%>
         </td>
-          <% if join_kpt.problem_status == "○少し達成○" %>
+          <% if kpt.try_status == "◎少し達成◎" %>
             <td style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFFFCC;">
-          <% elsif join_kpt.problem_status == "○達成○"%>
+          <% elsif kpt.try_status == "◎達成◎"%>
             <td style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #CCFFFF;">
           <%else %>
             <td style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFCCCC;">
           <%end %>
-            <%=safe_join(join_kpt.problem_content.split("\n"),tag(:br))%>
-        </td>
-          <% if join_kpt.try_status == "◎少し達成◎" %>
-            <td style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFFFCC;">
-          <% elsif join_kpt.try_status == "◎達成◎"%>
-            <td style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #CCFFFF;">
-          <%else %>
-            <td style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFCCCC;">
-          <%end %>
-          <%=safe_join(join_kpt.try_content.split("\n"),tag(:br))%>
-        
+          <%=safe_join(kpt.try_content.split("\n"),tag(:br))%>
         </td>
       </tr>
     <% end %>
-  </tbody>
+  </tbody> 
 </table>
+
+<br>
+<%= link_to '戻る', teams_path %>

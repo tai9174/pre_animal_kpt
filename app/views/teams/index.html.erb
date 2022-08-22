@@ -11,7 +11,7 @@
   <tbody>
     <% @teams.each do |team| %>
       <tr>
-        <td><%= link_to team.team_name, team_kpts_path(team)%></td>
+        <td><%= link_to team.team_name, team_kpts0_path(team)%></td>
         <td><%= link_to '詳細(チームに加る・外れる)', team %></td>
         <td><%= link_to 'チームメンバー', team_members_path(team) %></td>
         <% if team.user == current_user %>

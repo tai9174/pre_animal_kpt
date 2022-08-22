@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-  before_action :set_team, only: %i[ show edit update destroy ]
+  before_action :set_team, only: %i[ show edit update destroy  ]
   
   def index
     @teams = Team.all
@@ -69,15 +69,28 @@ class TeamsController < ApplicationController
   end
 
 
-  def kpts
+  def kpts0
     @team = Team.find(params[:team_id])
     @join_team_users= @team.join_team_users
-    @today_kpts=[]
+    @day0_kpts=[]
     @join_team_users.each do |join_team_user|
       join_team_user.kpts.each do |kpt|
-        binding.pry
-        if kpt.date.strftime('%Y/%m/%d')== DateTime.now.strftime('%Y/%m/%d')
-          @today_kpts<< kpt
+        if kpt.date.strftime('%Y/%m/%d')== Time.now.strftime('%Y/%m/%d')
+          @day0_kpts<< kpt
+        end
+      end
+    end
+  end
+
+
+  def kpts_1
+    @team = Team.find(params[:team_id])
+    @join_team_users= @team.join_team_users
+    @day_1_kpts=[]
+    @join_team_users.each do |join_team_user|
+      join_team_user.kpts.each do |kpt_1|
+        if kpt_1.date.strftime('%Y/%m/%d')== (Time.now.-1.day).strftime('%Y/%m/%d')
+          @day_1_kpts<< kpt_1
         end
       end
     end
@@ -85,9 +98,13 @@ class TeamsController < ApplicationController
   
   def calendar
     @team = Team.find(params[:team_id])
+    # @team_kpts=@team.join_team_users.kpts
     @join_team_users= @team.join_team_users
     @join_team_users.each do |join_team_user|
       @join_kpts=join_team_user.kpts.order(date: :desc)
+      @join_kpts.each do |join_kpt|
+        @join_kpt=join_kpt
+      end
     end
   end
 
@@ -99,6 +116,6 @@ class TeamsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
   def team_params
-    params.require(:team).permit(:team_name,:creater_id)
+    params.require(:team).permit(:team_name)
   end
 end
