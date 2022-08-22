@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :join_teams, only: [:create, :destroy]
   resources :teams do
     get :members
     get :kpts
