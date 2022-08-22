@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  resources :restaurants, only: [:index, :show] 
-  namespace :admin do
-    resources :restaurants, only: [:index, :new, :create, :show,  :edit, :destroy]    
-  end
   get "kpts/day_kpt" => "kpts#day_kpt"
   resources :join_teams, only: [:create, :destroy]
   resources :teams do
