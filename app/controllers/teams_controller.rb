@@ -75,6 +75,7 @@ class TeamsController < ApplicationController
     @today_kpts=[]
     @join_team_users.each do |join_team_user|
       join_team_user.kpts.each do |kpt|
+        binding.pry
         if kpt.date.strftime('%Y/%m/%d')== DateTime.now.strftime('%Y/%m/%d')
           @today_kpts<< kpt
         end
@@ -85,7 +86,6 @@ class TeamsController < ApplicationController
   def calendar
     @team = Team.find(params[:team_id])
     @join_team_users= @team.join_team_users
-    @today_kpts=[]
     @join_team_users.each do |join_team_user|
       @join_kpts=join_team_user.kpts.order(date: :desc)
     end
