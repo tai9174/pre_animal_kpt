@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :teams do
+    get :members
+    get :kpts
+    get :calendar
+  end
   get "users/show" => "users#show"
   get "favorits/index" => "favorits#index"
   get "tops/help" => "tops#help"
