@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :restaurants, only: [:index, :show] 
+  namespace :admin do
+    resources :restaurants, only: [:index, :new, :create, :show,  :edit, :destroy]    
+  end
   get "kpts/day_kpt" => "kpts#day_kpt"
   resources :join_teams, only: [:create, :destroy]
   resources :teams do
@@ -14,11 +18,11 @@ Rails.application.routes.draw do
     get :calendar
   end
   get "users/show" => "users#show"
-  get "favorits/index" => "favorits#index"
-  get "tops/help" => "tops#help"
+  get "favorits/index" 
+  get "tops/help" 
   root "kpts#index"
   resources :kpts 
   devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  get "tops/index" => "tops#index"
+  get "tops/index"
 end
