@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>チーム名</strong>
+  <%= @team.team_name%>
+</p>
+
+<p>
+  <strong>作成者</strong>
+  <%=@team.user.name%>
+</p>
+
+
+  <% if @join_team.present? %>
+    <%= link_to 'チームから外れる', join_team_path(id: @join_team.id), method: :delete, class: 'btn btn-danger' %>|
+  <% else %>
+    <%= link_to 'チームに加る', join_teams_path(team_id: @team.id), method: :post, class: 'btn btn-primary' %>|
+  <% end %>
+
+<%= link_to '編集', edit_team_path(@team) %> |
+<%= link_to '戻る', teams_path %>
