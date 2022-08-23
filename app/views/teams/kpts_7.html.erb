@@ -1,6 +1,7 @@
 <h1><%=@team.team_name %>のKPT</h1>
 <div>
-<h3><%=Date.today-1.strftime('%m/%d') %></h3>
+<h3><%=(Time.now.-7.day).strftime('%m/%d')%></h3>
+
 </div>
 <%= link_to 'カレンダーに戻る', team_calendar_path %>
 <table>
@@ -15,7 +16,7 @@
   </thead>
 
   <tbody>
-    <%@day_1_kpts.each do |kpt| %>
+    <%@day_7_kpts.each do |kpt| %>
       <tr>
         <td><%=kpt.user.name %></td>
           <% if kpt.keep_status == "●少し達成●" %>
