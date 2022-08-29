@@ -9,11 +9,11 @@
   <strong>Keep :</strong>
 </p>
   <% if @kpt.keep_status == "●少し達成●" %>
-    <p style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFFFCC;" id="keep-area">
+    <p style="height: 250px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFFFCC;" id="keep-area">
   <% elsif @kpt.keep_status == "●達成●"%>
-    <p style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #CCFFFF;" id="keep-area">
+    <p style="height: 250px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #CCFFFF;" id="keep-area">
   <%else %>
-    <p style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFCCCC;" id="keep-area">
+    <p style="height: 250px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFCCCC;" id="keep-area">
   <%end %>
   <%= safe_join(@kpt.keep_content.split("\n"),tag(:br))%>
 </p>
@@ -31,11 +31,11 @@
   <strong>Problem :</strong>
 </p>
   <% if @kpt.problem_status == "○少し達成○" %>
-    <p style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFFFCC;" id="problem-area">
+    <p style="height: 250px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFFFCC;" id="problem-area">
   <% elsif @kpt.problem_status == "○達成○"%>
-    <p style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #CCFFFF;" id="problem-area">
+    <p style="height: 250px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #CCFFFF;" id="problem-area">
   <%else %>
-    <p style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFCCCC;" id="problem-area">
+    <p style="height: 250px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFCCCC;" id="problem-area">
   <%end %>
   <%=safe_join(@kpt.problem_content.split("\n"),tag(:br))%>
 </p>
@@ -53,11 +53,11 @@
   <strong>Try :</strong>
 </p>
   <% if @kpt.try_status == "◎少し達成◎" %>
-    <p style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFFFCC;" id="try-area">
+    <p style="height: 250px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFFFCC;" id="try-area">
   <% elsif @kpt.try_status == "◎達成◎"%>
-    <p style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #CCFFFF;" id="try-area">
+    <p style="height: 250px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #CCFFFF;" id="try-area">
   <%else %>
-    <p style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFCCCC;" id="try-area">
+    <p style="height: 250px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFCCCC;" id="try-area">
   <%end %>
   <%=safe_join(@kpt.try_content.split("\n"),tag(:br))%>
 </p>

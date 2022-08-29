@@ -10,3 +10,13 @@
   <button class="btn btn-secondary btn-lg" >ログイン</button>
 <%end%>
 </div>
+<div>
+<%= link_to users_guest_sign_in_path, method: :post do%>
+  <button class="btn btn-secondary btn-lg" >ゲストログイン</button>
+<%end%>
+</div>
+<div>
+<%= link_to users_guest_admin_sign_in_path, method: :post do%>
+  <button class="btn btn-secondary btn-lg" >ゲスト管理者ログイン</button>
+<%end%>
+</div>

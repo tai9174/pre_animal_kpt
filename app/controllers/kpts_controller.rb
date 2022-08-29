@@ -1,4 +1,5 @@
 class KptsController < ApplicationController
+  # before_action :ensure_normal_user, only: %i[new create update destroy]
   before_action :set_kpt, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, only: [:new, :create,:index]
 
@@ -83,4 +84,10 @@ class KptsController < ApplicationController
   def kpt_params
     params.require(:kpt).permit(:keep_content, :keep_status, :problem_content, :problem_status, :try_content, :try_status, :favorite,:date)
   end
+
+  # def ensure_normal_user
+  #   if current_user.name == 'ゲストユーザー'
+  #     redirect_to root_path , notice: 'ユーザー登録をすると作業ができます'
+  #   end
+  # end
 end

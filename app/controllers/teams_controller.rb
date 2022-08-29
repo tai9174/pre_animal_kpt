@@ -1,5 +1,6 @@
 class TeamsController < ApplicationController
-  before_action :set_team, only: %i[ show edit update destroy  ]
+  before_action :ensure_normal_user, only: %i[new create update destroy]
+  before_action :set_team, only: %i[ show edit update destroy ]
   
   def index
     @teams = Team.all
@@ -192,5 +193,11 @@ class TeamsController < ApplicationController
     # Only allow a list of trusted parameters through.
   def team_params
     params.require(:team).permit(:team_name)
+  end
+
+  def ensure_normal_user
+    if current_user.name == 'ゲストユーザー' || current_user.name == 'ゲスト管理者'
+      redirect_to teams_path, notice: 'ゲストユーザーはチームを編集することができません'
+    end
   end
 end

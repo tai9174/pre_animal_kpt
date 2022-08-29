@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Users::PasswordsController < Devise::PasswordsController
+  before_action :ensure_normal_user, only: :create
+
   # GET /resource/password/new
   # def new
   #   super
@@ -31,4 +33,9 @@ class Users::PasswordsController < Devise::PasswordsController
   # def after_sending_reset_password_instructions_path_for(resource_name)
   #   super(resource_name)
   # end
+  def ensure_normal_user
+    if params[:user][:name] == 'ゲストユーザー' || params[:user][:name] == 'ゲスト管理者'
+      redirect_to new_user_session_path, alert: 'ゲストユーザーのパスワード再設定はできません。'
+    end
+  end
 end
