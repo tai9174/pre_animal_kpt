@@ -40,3 +40,5 @@ gem 'clipboard-rails'
 gem 'zeroclipboard-rails'
 gem 'jquery-turbolinks'
 gem "simple_calendar", "~> 2.0"
+gem 'rails_admin', '~> 3.0'
+gem 'cancancan'

@@ -1,11 +1,13 @@
-<p id="notice"><%= notice %></p>
+<h1><%=@team.team_name %>のKPT</h1>
+<div>
+<h3><%=(Time.now.-2.day).strftime('%m/%d')%></h3>
 
-<h1><%= current_user.name %>のお気に入りのKpts</h1>
-
+</div>
+<%= link_to 'KPT一週間一覧', team_calendar_path %>
 <table>
   <thead>
     <tr>
-      <th>Date </th>
+      <th>ニックネーム </th>
       <th>Keep </th>
       <th>Problem </th>
       <th>Try </th>
@@ -14,9 +16,9 @@
   </thead>
 
   <tbody>
-    <% @favorite_kpts.each do |kpt| %>
+    <%@day_2_kpts.each do |kpt| %>
       <tr>
-        <td><%= kpt.created_at.strftime('%m/%d') %></td>
+        <td><%=kpt.user.name %></td>
           <% if kpt.keep_status == "●少し達成●" %>
             <td style="height: 250px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFFFCC;">
           <% elsif kpt.keep_status == "●達成●"%>
@@ -25,8 +27,7 @@
             <td style="height: 250px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFCCCC;">
           <%end %>
           <%=safe_join(kpt.keep_content.split("\n"),tag(:br))%>
-
-        </td>
+        </td> 
           <% if kpt.problem_status == "○少し達成○" %>
             <td style="height: 250px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFFFCC;">
           <% elsif kpt.problem_status == "○達成○"%>
@@ -44,17 +45,10 @@
             <td style="height: 250px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFCCCC;">
           <%end %>
           <%=safe_join(kpt.try_content.split("\n"),tag(:br))%>
-        
         </td>
-        <td><%= link_to '詳細', kpt %></td>
-        <td><%= link_to '編集', edit_kpt_path(kpt) %></td>
-        <td><%= link_to '削除', kpt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
-  </tbody>
+  </tbody> 
 </table>
 
-
-
-
-<%= link_to 'マイKPT', kpts_path%>
+<br>

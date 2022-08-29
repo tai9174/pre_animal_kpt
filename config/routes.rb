@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
+    post 'users/guest_admin_sign_in', to: 'users/sessions#guest_admin_sign_in'
+  end
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get "kpts/day_kpt" => "kpts#day_kpt"
   resources :join_teams, only: [:create, :destroy]
   resources :teams do
@@ -14,11 +19,14 @@ Rails.application.routes.draw do
     get :calendar
   end
   get "users/show" => "users#show"
-  get "favorits/index" => "favorits#index"
-  get "tops/help" => "tops#help"
+  get "favorits/index" 
+  get "tops/help" 
   root "kpts#index"
-  resources :kpts 
-  devise_for :users
+  resources :kpts
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  get "tops/index" => "tops#index"
+  get "tops/index"
 end

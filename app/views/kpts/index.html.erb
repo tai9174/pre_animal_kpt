@@ -1,10 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 <h1><%= current_user.name %>のKpts</h1>
-
+<% if current_user.admin == true %>
+  <td><%= link_to '管理者画面', rails_admin_path %></td>
+<% else %>
+  <td></td>
+<% end %>
 <%= link_to "New Kpt", new_kpt_path, data: {"turbolinks" => false} %>
 <%= link_to 'アプリの使い方', tops_help_path%>
 <%= link_to 'お気に入り', favorits_index_path%>
+
 <table>
   <thead>
     <tr>
@@ -21,29 +26,29 @@
       <tr>
         <td><%= kpt.date.strftime('%m/%d') %></td>
           <% if kpt.keep_status == "●少し達成●" %>
-            <td style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFFFCC;">
+            <td style="height: 250px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFFFCC;">
           <% elsif kpt.keep_status == "●達成●"%>
-            <td style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #CCFFFF;">
+            <td style="height: 250px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #CCFFFF;">
           <%else %>
-            <td style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFCCCC;">
+            <td style="height: 250px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFCCCC;">
           <%end %>
           <%=safe_join(kpt.keep_content.split("\n"),tag(:br))%>
         </td>
           <% if kpt.problem_status == "○少し達成○" %>
-            <td style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFFFCC;">
+            <td style="height: 250px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFFFCC;">
           <% elsif kpt.problem_status == "○達成○"%>
-            <td style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #CCFFFF;">
+            <td style="height: 250px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #CCFFFF;">
           <%else %>
-            <td style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFCCCC;">
+            <td style="height: 250px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFCCCC;">
           <%end %>
             <%=safe_join(kpt.problem_content.split("\n"),tag(:br))%>
         </td>
           <% if kpt.try_status == "◎少し達成◎" %>
-            <td style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFFFCC;">
+            <td style="height: 250px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFFFCC;">
           <% elsif kpt.try_status == "◎達成◎"%>
-            <td style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #CCFFFF;">
+            <td style="height: 250px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #CCFFFF;">
           <%else %>
-            <td style="height: 150px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFCCCC;">
+            <td style="height: 250px; width: 350px; padding: 10px; margin-bottom: 10px; border: 1px solid #333333;background-color: #FFCCCC;">
           <%end %>
           <%=safe_join(kpt.try_content.split("\n"),tag(:br))%>
         
